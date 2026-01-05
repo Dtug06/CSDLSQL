@@ -1,28 +1,43 @@
-	use ss6;
-    alter table orders add total_amount decimal(10,2);
-     
-     UPDATE orders
-SET total_amount = 1500000
-WHERE order_id = 101;
+use ss6;
 
-UPDATE orders
-SET total_amount = 2500000
-WHERE order_id = 102;
+alter table Orders
+add column total_amount decimal(10,2);
 
-UPDATE orders
-SET total_amount = 3200000
-WHERE order_id = 103;
+update Orders
+set total_amount =200000
+where order_id =1;
 
-UPDATE orders
-SET total_amount = 1800000
-WHERE order_id = 104;
+update Orders
+set total_amount =380000
+where order_id =2;
 
-UPDATE orders
-SET total_amount = 2750000
-WHERE order_id = 105;
- 
- SELECT c.full_name, SUM(o.total_amount) AS total_spent
-FROM customers c
-JOIN orders o ON c.customer_id = o.customer_id
-GROUP BY c.full_name;
+update Orders
+set total_amount =21010000
+where order_id =3;
 
+update Orders
+set total_amount =900000
+where order_id =4;
+
+update Orders
+set total_amount =12300000
+where order_id =5;
+
+select c.customer_id, c.full_name,sum(o.total_amount) as total_price
+from Customers c 
+left join Orders o
+on c.customer_id=o.customer_id
+group by c.customer_id,c.full_name;
+
+select c.customer_id, c.full_name,max(o.total_amount) as max_price
+from Customers c 
+left join Orders o
+on c.customer_id=o.customer_id
+group by c.customer_id,c.full_name;
+
+select c.customer_id, c.full_name,sum(o.total_amount) as total_price
+from Customers c 
+left join Orders o
+on c.customer_id=o.customer_id
+group by c.customer_id,c.full_name
+order by total_price desc ;
