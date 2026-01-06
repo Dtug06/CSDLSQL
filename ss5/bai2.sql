@@ -6,6 +6,8 @@ email varchar(225),
 city varchar(225),
 status  enum('active','inactive')
 );
+alter table customer 
+modify customer_id int primary key ;
 INSERT INTO customer (customer_id, full_name, email, city, status)
  VALUES
  (1, 'Nguyễn Văn A', 'vana@example.com', 'TP.HCM', 'active'), 

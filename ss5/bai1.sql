@@ -8,6 +8,8 @@ use SS5;
  stock int,
  status enum('active','inactive')
  );
+ alter table products 
+ modify product_id int primary key;
  INSERT INTO products (product_id, product_name, price, stock, status) 
  VALUES 
  (1, 'Laptop Dell Inspiron', 15000000.00, 20, 'active'),
